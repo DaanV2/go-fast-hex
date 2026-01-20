@@ -1,5 +1,8 @@
-assembly:
-	go tool compile -S x.go
+default:
+	just --list
+
+benchmark:
+	go test ./... -bench=. -benchmem -run=^$
 
 test:
 	go test ./... --cover -coverprofile reports/coverage
