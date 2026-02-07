@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	fasthex "github.com/DaanV2/go-fast-hex"
+	"github.com/DaanV2/go-fast-hex/pkg/tabled"
 )
 
 var lengths = []int{1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384}
@@ -17,7 +18,7 @@ func BenchmarkVectorEncodeUpper(b *testing.B) {
 
 		b.Run(title, func(b *testing.B) {
 			for b.Loop() {
-				result := fasthex.EncodeUpper(src)
+				result := fasthex.EncodeLowerWithVec(src)
 				if len(result) != length*2 {
 					b.Fatalf("unexpected result length: got %d, want %d", len(result), length*2)
 				}
@@ -33,7 +34,39 @@ func BenchmarkVectorEncodeLower(b *testing.B) {
 
 		b.Run(title, func(b *testing.B) {
 			for b.Loop() {
-				result := fasthex.EncodeLower(src)
+				result := fasthex.EncodeLowerWithVec(src)
+				if len(result) != length*2 {
+					b.Fatalf("unexpected result length: got %d, want %d", len(result), length*2)
+				}
+			}
+		})
+	}
+}
+
+func BenchmarkTabledEncodeUpper(b *testing.B) {
+	for _, length := range lengths {
+		title := fmt.Sprintf("Size(%d)", length)
+		src := generateData(length)
+
+		b.Run(title, func(b *testing.B) {
+			for b.Loop() {
+				result := tabled.EncodeUpper(src)
+				if len(result) != length*2 {
+					b.Fatalf("unexpected result length: got %d, want %d", len(result), length*2)
+				}
+			}
+		})
+	}
+}
+
+func BenchmarkTabledEncodeLower(b *testing.B) {
+	for _, length := range lengths {
+		title := fmt.Sprintf("Size(%d)", length)
+		src := generateData(length)
+
+		b.Run(title, func(b *testing.B) {
+			for b.Loop() {
+				result := tabled.EncodeLower(src)
 				if len(result) != length*2 {
 					b.Fatalf("unexpected result length: got %d, want %d", len(result), length*2)
 				}
