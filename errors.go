@@ -1,4 +1,4 @@
-package gofasthex
+package fasthex
 
 import "fmt"
 

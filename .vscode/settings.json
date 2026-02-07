@@ -1,0 +1,17 @@
+{
+    "go.testEnvVars": {
+        "GOEXPERIMENT": "simd"
+    },
+    "go.toolsEnvVars": {
+        "GOEXPERIMENT": "simd"
+    },
+    "terminal.integrated.env.linux": {
+        "GOEXPERIMENT": "simd"
+    },
+    "terminal.integrated.env.windows": {
+        "GOEXPERIMENT": "simd"
+    },
+    "terminal.integrated.env.osx": {
+        "GOEXPERIMENT": "simd"
+    }
+}

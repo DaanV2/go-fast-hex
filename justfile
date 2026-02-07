@@ -1,3 +1,6 @@
+# Load environment variables from .env file
+set dotenv := true
+
 default:
 	just --list
 
