@@ -10,7 +10,7 @@ import (
 
 var lengths = []int{1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384}
 
-func BenchmarkEncodeUpper(b *testing.B) {
+func BenchmarkVectorEncodeUpper(b *testing.B) {
 	for _, length := range lengths {
 		title := fmt.Sprintf("Size(%d)", length)
 		src := generateData(length)
@@ -26,7 +26,7 @@ func BenchmarkEncodeUpper(b *testing.B) {
 	}
 }
 
-func BenchmarkEncodeLower(b *testing.B) {
+func BenchmarkVectorEncodeLower(b *testing.B) {
 	for _, length := range lengths {
 		title := fmt.Sprintf("Size(%d)", length)
 		src := generateData(length)
